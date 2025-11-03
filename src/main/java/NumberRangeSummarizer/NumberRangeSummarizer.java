@@ -38,6 +38,30 @@ public class NumberRangeSummarizer implements INumberRangeSummarizer
 
     @Override
     public String summarizeCollection(Collection<Integer> input) {
-        return "";
+        if(input == null || input.isEmpty()) return "";
+
+        List<Integer> numbers = new ArrayList<>(input);
+
+
+        StringBuilder output = new StringBuilder();
+
+        int start = numbers.getFirst(), end = numbers.getFirst();
+
+        for (int i = 1; i < input.size(); i++)
+        {
+            int curr = numbers.get(i);
+
+            if(curr == end + 1 )
+            {
+                end = curr;
+            }
+            else {
+                getRange(output, start, end);
+                start = end = curr;
+            }
+        }
+
+        getRange(output, start, end);
+        return output.toString();
     }
 }
