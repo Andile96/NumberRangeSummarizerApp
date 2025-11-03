@@ -64,4 +64,16 @@ public class NumberRangeSummarizer implements INumberRangeSummarizer
         getRange(output, start, end);
         return output.toString();
     }
+
+    private void getRange(StringBuilder output, int str, int end) {
+        if(!output.isEmpty()) output.append(", ");
+
+        if(str == end)
+        {
+            output.append(str);
+        }
+        else {
+            output.append(str).append("-").append(end);
+        }
+    }
 }
