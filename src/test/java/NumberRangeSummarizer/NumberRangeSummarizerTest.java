@@ -52,4 +52,13 @@ class NumberRangeSummarizerTest {
         assertEquals(output,numSummarizer.summarizeCollection(collect));
     }
 
+    @Test
+    public void testCollectionCheckUnOrdersSequential() {
+        String input = "5,1,6,3,2,4,7";
+        Collection<Integer> collect = numSummarizer.collect(input);
+        String output = "1-7";
+
+        assertEquals(output,numSummarizer.summarizeCollection(collect));
+    }
+
 }
