@@ -61,4 +61,13 @@ class NumberRangeSummarizerTest {
         assertEquals(output,numSummarizer.summarizeCollection(collect));
     }
 
+    @Test
+    public void testCollectionCheckDuplicateSequential() {
+        input = "1, 2, 2, 3, 4, 4, 5";
+        collect = numSummarizer.collect(input);
+        String output = "1-5";
+
+        assertEquals(output,numSummarizer.summarizeCollection(collect));
+    }
+
 }
