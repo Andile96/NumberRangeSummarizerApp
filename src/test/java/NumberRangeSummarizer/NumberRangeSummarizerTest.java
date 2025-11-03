@@ -2,6 +2,8 @@ package NumberRangeSummarizer;
 import org.junit.jupiter.api.Test;
 import java.util.Collection;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class NumberRangeSummarizerTest {
 
     private final NumberRangeSummarizer numSummarizer = new NumberRangeSummarizer();
@@ -15,6 +17,39 @@ class NumberRangeSummarizerTest {
 
         collect = numSummarizer.collect(input);
 
+    }
+    @Test
+    public void testCollectionOutput() {
+        input = "1,3,6,7,8,12,13,14,15,21,22,23,24,31";
+        collect = numSummarizer.collect(input);
+        String output = "1, 3, 6-8, 12-15, 21-24, 31";
+
+        assertEquals(output,numSummarizer.summarizeCollection(collect));
+    }
+    @Test
+    public void testCollectionNoSequential() {
+        input = "1,3,5,7,9,11,13";
+        collect = numSummarizer.collect(input);
+        String output = "1, 3, 5, 7, 9, 11, 13";
+
+        assertEquals(output,numSummarizer.summarizeCollection(collect));
+    }
+    @Test
+    public void testCollectionNotSequential() {
+        input = "1,3,5,7,9,11,13";
+        collect = numSummarizer.collect(input);
+        String output = "1, 3, 5, 7, 9, 11, 13";
+
+        assertEquals(output,numSummarizer.summarizeCollection(collect));
+    }
+
+    @Test
+    public void testCollectionSequential() {
+        input = "5,6,7,9,10,11";
+        collect = numSummarizer.collect(input);
+        String output = "5-7, 9-11";
+
+        assertEquals(output,numSummarizer.summarizeCollection(collect));
     }
 
 }
